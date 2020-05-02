@@ -14,3 +14,15 @@ source venv/bin/activate
 ```
 pip install -r app/requirements.txt
 ```
+
+### Variáveis de ambiente
+```
+export PYTHONPATH=$PYTHONPATH:$(pwd)/app
+export FLASK_ENV=development
+export FLASK_APP=app/main.py
+```
+
+### Iniciano a aplicação
+```
+flask run
+```
