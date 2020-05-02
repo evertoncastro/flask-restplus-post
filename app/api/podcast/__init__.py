@@ -1,5 +1,7 @@
 from flask import Blueprint
 from flask_restplus import Api as ApiRestPlus
+from api.podcast.namespaces import producer
+from api.podcast.namespaces import episode
 
 api = ApiRestPlus(
     Blueprint('API de PodCasts', __name__),
@@ -7,6 +9,10 @@ api = ApiRestPlus(
     version='1.0',
     description='Endpoints para gestão de produtores e episódios de podcasts'
 )
+
+# Atrela o namespace à API de podcast
+producer.bind_with_api(api)
+episode.bind_with_api(api)
 
 
 def load_api(app) -> object:

@@ -43,8 +43,8 @@ class Episode(db.Model):
         session.add(new)
         return new
 
-    def fetch(self, session, _id):
-        return session.query(self.__class__).filter_by(id=_id).first()
+    def fetch(self, session, parent_id, _id):
+        return session.query(self.__class__).filter_by(producer_id=parent_id, id=_id).first()
 
     def fetch_all(self, session):
         return session.query(self.__class__).filter_by().all()

@@ -79,7 +79,7 @@ class TestEpisodeModel(TestCase):
             url='http://produtor/episodio/1'
         )
         self.session.commit()
-        teste_episodio = Episode().fetch(self.session, novo_episodio.id)
+        teste_episodio = Episode().fetch(self.session, 1, novo_episodio.id)
         self.assertIsNotNone(teste_episodio)
 
     def testa_se_busca_episodios_de_um_produtor(self):
@@ -113,10 +113,10 @@ class TestEpisodeModel(TestCase):
             url='http://produtor/episodio/1'
         )
         self.session.commit()
-        teste_episodio = Episode().fetch(self.session, novo_episodio.id)
+        teste_episodio = Episode().fetch(self.session, 1, novo_episodio.id)
         self.assertIsNotNone(teste_episodio)
         apagado = Episode().delete(self.session, 1, teste_episodio.id)
         self.session.commit()
         self.assertTrue(apagado)
-        teste_produtor = Episode().fetch(self.session, teste_episodio.id)
+        teste_produtor = Episode().fetch(self.session, 1, teste_episodio.id)
         self.assertIsNone(teste_produtor)
