@@ -1,0 +1,22 @@
+.
+├── README.md                        # Instruções sobre o projeto
+├── app                              # Diretório com o aplicativo Flask
+│   ├── __init__.py                  # Arquivo onde é realizada a criaçao do Flask App
+│   ├── api                          # Diretório base para os arquivos da API
+│   │   ├── __init__.py
+│   │   └── podcast                  # Diretório da API de podcasts
+│   │       ├── __init__.py          # Arquivo onde é realizada a criação do objeto API Flask ResTPLUS
+│   │       └── namespaces           # Diretório base para os arquivos de namespaces
+│   │           ├── __init__.py
+│   │           ├── episode.py       # Namespace para episódios
+│   │           └── producer.py      # Namespace para produtores
+│   ├── config.py                    # Arquivo de configuração do Flask
+│   ├── main.py                      # Arquivo que inicia a aplicação Flask
+│   ├── models.py                    # Classes que mapeiam as tebelas de banco de dados - Modelos
+│   └── requirements.txt             # Declaração de dependências/bibliotecas
+└── tests                            # Diretório de testes unitários e integração
+    ├── __init__.py
+    ├── runner.py                    # Ponto inicial da suite de testes
+    ├── test_models.py               # Testes dos Modelos
+    ├── test_podcast_episode_ns.py   # Testes dos endpoints do namespace de episódios
+    └── test_podcast_producer_ns.py  # Testes dos endpoints do namespace de produtores

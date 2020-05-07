@@ -8,10 +8,13 @@ from werkzeug.exceptions import InternalServerError
 
 namespace = Namespace('produtor', description='Produtor')
 
+# É possível criar modelos que podem ser usados nas configurações dos endpoints
+# para serem recebidos como parâmetros
 create_producer_request = namespace.model('Dados para criação de produtor', {
     'name': fields.String(required=True, description='Nome do produtor')
 })
 
+# É possível criar modelos que podem ser usados nas respostas dos endpoints
 create_producer_response = namespace.model('Resposta da criaçao de produtor', {
     'id': fields.Integer(required=True, description='Identificador único do produtor')
 })
@@ -35,16 +38,21 @@ delete_producer_response = namespace.model('Resposta da remocao de produtores', 
 })
 
 headers = namespace.parser()
-# Aqui podemos adicionar mais parametros
+# Aqui podemos adicionar mais parametros ao headers
 
 
+# O decorador .route define o caminho do endpoint dentro da API
 @namespace.route('/cria', doc={"description": 'Cria um novo produtor'})
+# o decorador .expect declara as configurações, obrigatórias ou não, que devem ser enviadas
 @namespace.expect(headers)
 class CreateProducer(Resource):
+    # O .response deixa explícito na documentação as possíveis respostas
     @namespace.response(200, 'Success')
     @namespace.response(400, 'Request Error')
     @namespace.response(500, 'Server Error')
+    # O .expect declara os parâmetros, obrigatórios ou não, que o endpoit espera
     @namespace.expect(create_producer_request, validate=True)
+    # o .marshal_with declara a estrutura da resposta com base no model recebido como parâmetro
     @namespace.marshal_with(create_producer_response)
     def post(self):
         """Cria novo produtor"""

@@ -70,7 +70,7 @@ class TestEpisodeNamespace(TestCase):
         )
         self.assertEqual(response.status_code, 404)
 
-    def testa_se_a_lista_de_produtores_que_esta_no_banco(self):
+    def testa_se_retorna_a_lista_de_episodio_que_esta_no_banco(self):
         Episode().create(
             self.session,
             producer_id=1, name='Episódio 1', url='/')
@@ -85,7 +85,7 @@ class TestEpisodeNamespace(TestCase):
         data = loads(response.get_data())
         self.assertEquals(len(data['list']), 2)
 
-    def testa_se_remove_um_produtor_do_banco_de_dados(self):
+    def testa_se_remove_um_episodio_do_banco_de_dados(self):
         Episode().create(
             self.session,
             producer_id=1, name='Episódio 1', url='/')

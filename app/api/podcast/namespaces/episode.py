@@ -39,7 +39,7 @@ delete_episode_response = namespace.model('Resposta da remocao de episódio', {
 })
 
 headers = namespace.parser()
-# Aqui podemos adicionar mais parametros
+# Aqui podemos adicionar mais parametros ao headers
 
 
 @namespace.route('/cria', doc={"description": 'Cria um novo episódio'})
